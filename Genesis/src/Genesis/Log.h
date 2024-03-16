@@ -21,15 +21,15 @@ namespace Genesis
 }
 
 // Core log macros
-#define GS_CORE_INFO(...)		::Genesis::Log::GetCoreLogger()->info(__VA_ARGS__)
-#define GS_CORE_TRACE(...)		::Genesis::Log::GetCoreLogger()->trace(__VA_ARGS__)
-#define GS_CORE_WARN(...)		::Genesis::Log::GetCoreLogger()->warn(__VA_ARGS__)
-#define GS_CORE_ERROR(...)		::Genesis::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define GS_CORE_FATAL(...)		::Genesis::Log::GetCoreLogger()->fatal(__VA_ARGS__)
+#define GS_CORE_INFO(...)		Genesis::Log::GetCoreLogger()->info(__VA_ARGS__)
+#define GS_CORE_TRACE(...)		Genesis::Log::GetCoreLogger()->trace(__VA_ARGS__)
+#define GS_CORE_WARN(...)		Genesis::Log::GetCoreLogger()->warn(__VA_ARGS__)
+#define GS_CORE_ERROR(...)		Genesis::Log::GetCoreLogger()->error(__VA_ARGS__)
+#define GS_CORE_CRITICAL(...)	Genesis::Log::GetCoreLogger()->critical(__VA_ARGS__)
 
 // Client log macros
-#define GS_INFO(...)			::Genesis::Log::GetClientLogger()->info(__VA_ARGS__)
-#define GS_TRACE(...)			::Genesis::Log::GetClientLogger()->trace(__VA_ARGS__)
-#define GS_WARN(...)			::Genesis::Log::GetClientLogger()->warn(__VA_ARGS__)
-#define GS_ERROR(...)			::Genesis::Log::GetClientLogger()->error(__VA_ARGS__)
-#define GS_FATAL(...)			::Genesis::Log::GetClientLogger()->fatal(__VA_ARGS__)
+#define GS_INFO(...)			Genesis::Log::GetClientLogger()->info(__VA_ARGS__)
+#define GS_TRACE(...)			Genesis::Log::GetClientLogger()->trace(__VA_ARGS__)
+#define GS_WARN(...)			Genesis::Log::GetClientLogger()->warn(__VA_ARGS__)
+#define GS_ERROR(...)			Genesis::Log::GetClientLogger()->error(__VA_ARGS__)
+#define GS_CRITICAL(...)		Genesis::Log::GetClientLogger()->critical(__VA_ARGS__)
