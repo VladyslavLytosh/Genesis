@@ -1,5 +1,8 @@
 #include "Application.h"
 
+#include "Log.h"
+#include "Events/ApplicationEvent.h"
+
 namespace Genesis
 {
 	Application::Application()
@@ -12,6 +15,8 @@ namespace Genesis
 
 	void Application::Run()
 	{
+		WindowResizeEvent e(800, 600);
+		GS_TRACE(e);
 		while (true)
 		{
 			

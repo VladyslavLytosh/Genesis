@@ -26,6 +26,7 @@ project "Genesis"
 
 	includedirs
 	{
+		"%{prj.name}/src",
 		"Genesis/vendor/spdlog/include"
 	}
 
