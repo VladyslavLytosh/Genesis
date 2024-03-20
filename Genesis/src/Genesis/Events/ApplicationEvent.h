@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Genesis
 {
 	class GENESIS_API WindowResizeEvent : public Event

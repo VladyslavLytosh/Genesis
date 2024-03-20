@@ -18,6 +18,9 @@ project "Genesis"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "gspch.h"
+	pchsource "Genesis/src/gspch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",

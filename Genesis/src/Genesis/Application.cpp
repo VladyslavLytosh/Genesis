@@ -1,5 +1,6 @@
-#include "Application.h"
+#include "gspch.h"
 
+#include "Application.h"
 #include "Log.h"
 #include "Events/ApplicationEvent.h"
 

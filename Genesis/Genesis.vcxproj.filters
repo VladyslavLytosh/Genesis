@@ -19,13 +19,10 @@
     <ClInclude Include="src\Genesis\EntryPoint.h">
       <Filter>Genesis</Filter>
     </ClInclude>
-    <ClInclude Include="src\Genesis\Events\Event.h">
+    <ClInclude Include="src\Genesis\Events\ApplicationEvent.h">
       <Filter>Genesis\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Genesis\Log.h">
-      <Filter>Genesis</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Genesis\Events\ApplicationEvent.h">
+    <ClInclude Include="src\Genesis\Events\Event.h">
       <Filter>Genesis\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Genesis\Events\KeyEvent.h">
@@ -34,6 +31,10 @@
     <ClInclude Include="src\Genesis\Events\MouseEvent.h">
       <Filter>Genesis\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Genesis\Log.h">
+      <Filter>Genesis</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gspch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Genesis\Application.cpp">
@@ -42,5 +43,6 @@
     <ClCompile Include="src\Genesis\Log.cpp">
       <Filter>Genesis</Filter>
     </ClCompile>
+    <ClCompile Include="src\gspch.cpp" />
   </ItemGroup>
 </Project>

@@ -1,13 +1,11 @@
 #pragma once
+#include "gspch.h"
 
-#include "../Core.h"
-
-#include <string>
-#include <functional>
+#include "../Core.h" 
 
 namespace Genesis
 {
-	enum class EventType
+	enum class EventType  
 	{
 		None,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
