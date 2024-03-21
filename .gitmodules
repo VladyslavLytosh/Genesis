@@ -1,3 +1,9 @@
 [submodule "Genesis/vendor/spdlog"]
 	path = Genesis/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "glfw"]
+	path = glfw
+	url = https://github.com/VladyslavLytosh/glfw
+[submodule "Genesis/vendor/GLFW"]
+	path = Genesis/vendor/GLFW
+	url = https://github.com/VladyslavLytosh/glfw
