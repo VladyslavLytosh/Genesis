@@ -17,7 +17,7 @@ namespace Genesis
 		unsigned GetWidth() const override { return m_Data.Width; }
 		unsigned GetHeight() const override { return m_Data.Height; }
 
-		void SetEventCallback(const EventCallbackFn& callback) override;
+		void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
 
