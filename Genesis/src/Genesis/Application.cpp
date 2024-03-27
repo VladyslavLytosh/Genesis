@@ -1,7 +1,7 @@
 #include "gspch.h"
 
 #include "Application.h"
-#include <GLFW/glfw3.h>
+#include <glad/glad.h>
 
 namespace Genesis
 {

@@ -13,8 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Genesis/vendor/GLFW/include"
+IncludeDir["Glad"] = "Genesis/vendor/Glad/include"
 
 include "Genesis/vendor/GLFW"
+include "Genesis/vendor/Glad"
 
 project "Genesis"
 	location "Genesis"
@@ -37,12 +39,14 @@ project "Genesis"
 	{
 		"%{prj.name}/src",
 		"Genesis/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
-	links
+	links	
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -54,7 +58,8 @@ project "Genesis"
 		defines
 		{
 			"GS_PLATFORM_WINDOWS",
-			"GS_BUILD_DLL"
+			"GS_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
