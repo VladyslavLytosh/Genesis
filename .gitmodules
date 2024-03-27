@@ -7,3 +7,6 @@
 [submodule "Genesis/vendor/GLFW"]
 	path = Genesis/vendor/GLFW
 	url = https://github.com/VladyslavLytosh/glfw
+[submodule "Genesis/vendor/imgui"]
+	path = Genesis/vendor/imgui
+	url = https://github.com/VladyslavLytosh/imgui.git

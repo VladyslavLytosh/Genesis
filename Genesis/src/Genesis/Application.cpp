@@ -7,8 +7,13 @@ namespace Genesis
 {
 #define BIND_EVENT(x) std::bind((x), this, std::placeholders::_1)
 
+	Application* Application::s_Instance = nullptr;
+
 	Application::Application()
 	{
+		GS_CORE_ASSERT(!s_Instance, "Application alread exists!");
+		s_Instance = this;
+
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT(&Application::OnEvent));
 	}
