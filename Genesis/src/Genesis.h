@@ -3,6 +3,7 @@
 // For ONLY application use
 
 #include "Genesis/Application.h"
+#include "Genesis/Layer.h"
 #include "Genesis/Log.h"
 
 // ---Entry Point-----------------

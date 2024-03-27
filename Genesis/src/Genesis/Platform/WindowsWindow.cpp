@@ -62,7 +62,7 @@ namespace Genesis
 			data.Height = height;
 
 			WindowResizeEvent event(width, height);
-			data.EventCallback(event);
+			data.EventCallback(event); 
 		});
 
 		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window)

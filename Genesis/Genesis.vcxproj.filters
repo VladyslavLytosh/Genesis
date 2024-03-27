@@ -34,6 +34,12 @@
     <ClInclude Include="src\Genesis\Events\MouseEvent.h">
       <Filter>Genesis\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Genesis\Layer.h">
+      <Filter>Genesis</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Genesis\LayerStack.h">
+      <Filter>Genesis</Filter>
+    </ClInclude>
     <ClInclude Include="src\Genesis\Log.h">
       <Filter>Genesis</Filter>
     </ClInclude>
@@ -47,6 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Genesis\Application.cpp">
+      <Filter>Genesis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Genesis\Layer.cpp">
+      <Filter>Genesis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Genesis\LayerStack.cpp">
       <Filter>Genesis</Filter>
     </ClCompile>
     <ClCompile Include="src\Genesis\Log.cpp">
