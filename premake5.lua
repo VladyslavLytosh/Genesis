@@ -34,20 +34,20 @@ project "Genesis"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/src/**.cpp"
 	}
 
 	includedirs
 	{
 		"%{prj.name}/src",
-		"Genesis/vendor/spdlog/include",
+		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}"
 	}
 
-	links	
-	{
+	links 
+	{ 
 		"GLFW",
 		"Glad",
 		"ImGui",
@@ -55,10 +55,10 @@ project "Genesis"
 	}
 
 	filter "system:windows"
-		cppdialect "C++14"
+		cppdialect "C++17"
 		staticruntime "On"
 		systemversion "latest"
-		
+
 		defines
 		{
 			"GS_PLATFORM_WINDOWS",
@@ -72,80 +72,66 @@ project "Genesis"
 		}
 
 	filter "configurations:Debug"
-		defines
-		{
-			"GS_DEBUG",
-		}
+		defines "GS_DEBUG"
 		buildoptions "/MDd"
 		symbols "On"
+
 	filter "configurations:Release"
-		defines
-		{
-			"GS_RELEASE"
-		}
+		defines "GS_RELEASE"
 		buildoptions "/MD"
 		optimize "On"
+
 	filter "configurations:Dist"
-		defines
-		{
-			"GS_DIST"
-		}
+		defines "GS_DIST"
 		buildoptions "/MD"
 		optimize "On"
 
 project "Sandbox"
-		location "Sandbox"
-		kind "ConsoleApp"
-		language "C++"
+	location "Sandbox"
+	kind "ConsoleApp"
+	language "C++"
 
-		targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-		objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
-		files
+	files
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
+
+	includedirs
+	{
+		"Genesis/vendor/spdlog/include",
+		"Genesis/src"
+	}
+
+	links
+	{
+		"Genesis"
+	}
+
+	filter "system:windows"
+		cppdialect "C++17"
+		staticruntime "On"
+		systemversion "latest"
+
+		defines
 		{
-			"%{prj.name}/src/**.h",
-			"%{prj.name}/src/**.cpp",
-		}
-	
-		includedirs
-		{
-			"Genesis/vendor/spdlog/include",
-			"Genesis/src"
+			"GS_PLATFORM_WINDOWS"
 		}
 
-		links
-		{
-			"Genesis"
-		}
-	
-		filter "system:windows"
-			cppdialect "C++14"
-			staticruntime "On"
-			systemversion "latest"
-			
-			defines
-			{
-				"GS_PLATFORM_WINDOWS",
-			}
+	filter "configurations:Debug"
+		defines "GS_DEBUG"
+		buildoptions "/MDd"
+		symbols "On"
 
-		filter "configurations:Debug"
-			defines
-			{
-				"GS_DEBUG"
-			}
-			buildoptions "/MDd"
-			symbols "On"
-		filter "configurations:Release"
-			defines
-			{
-				"GS_RELEASE"
-			}
-			buildoptions "/MD"
-			optimize "On"
-		filter "configurations:Dist"
-			defines
-			{
-				"GS_DIST"
-			}
-			buildoptions "/MD"
-			optimize "On"
+	filter "configurations:Release"
+		defines "GS_RELEASE"
+		buildoptions "/MD"
+		optimize "On"
+
+	filter "configurations:Dist"
+		defines "GS_DIST"
+		buildoptions "/MD"
+		optimize "On"

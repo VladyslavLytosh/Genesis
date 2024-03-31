@@ -55,10 +55,7 @@
     <ClInclude Include="src\Genesis\Log.h">
       <Filter>Genesis</Filter>
     </ClInclude>
-    <ClInclude Include="src\Genesis\Platform\OpenGL\imgui_impl_opengl3.h">
-      <Filter>Genesis\Platform\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Genesis\Platform\OpenGL\imgui_impl_opengl3_loader.h">
+    <ClInclude Include="src\Genesis\Platform\OpenGL\ImGuiOpenGLRenderer.h">
       <Filter>Genesis\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Genesis\Platform\Windows\WindowsWindow.h">
@@ -85,7 +82,7 @@
     <ClCompile Include="src\Genesis\Log.cpp">
       <Filter>Genesis</Filter>
     </ClCompile>
-    <ClCompile Include="src\Genesis\Platform\OpenGL\imgui_impl_opengl3.cpp">
+    <ClCompile Include="src\Genesis\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
       <Filter>Genesis\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Genesis\Platform\Windows\WindowsWindow.cpp">
