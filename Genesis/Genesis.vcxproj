@@ -162,14 +162,16 @@
     <ClInclude Include="src\Genesis\Events\MouseEvent.h" />
     <ClInclude Include="src\Genesis\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Genesis\Input.h" />
+    <ClInclude Include="src\Genesis\KeyCodes.h" />
     <ClInclude Include="src\Genesis\Layer.h" />
     <ClInclude Include="src\Genesis\LayerStack.h" />
     <ClInclude Include="src\Genesis\Log.h" />
+    <ClInclude Include="src\Genesis\MouseButtonCodes.h" />
     <ClInclude Include="src\Genesis\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Genesis\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Genesis\Window.h" />
     <ClInclude Include="src\gspch.h" />
-    <ClInclude Include="WindowsInput.h" />
+    <ClInclude Include="src\Genesis\Platform\Windows\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Genesis\Application.cpp" />
@@ -182,7 +184,7 @@
     <ClCompile Include="src\gspch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="WindowsInput.cpp" />
+    <ClCompile Include="src\Genesis\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

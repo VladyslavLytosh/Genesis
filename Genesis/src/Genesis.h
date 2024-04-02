@@ -5,6 +5,10 @@
 #include "Genesis/Application.h"
 #include "Genesis/Layer.h"
 #include "Genesis/Log.h"
+#include "Genesis/Input.h"
+#include "Genesis/KeyCodes.h"
+#include "Genesis/MouseButtonCodes.h"
+
 #include "Genesis/ImGui/ImGuiLayer.h"
 // ---Entry Point-----------------
 #include "Genesis/EntryPoint.h"

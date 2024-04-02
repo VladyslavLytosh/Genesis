@@ -8,7 +8,7 @@ namespace Genesis
 {
 	std::unique_ptr<Input> Input::s_Instance = std::make_unique<WindowsInput>();
 
-	bool WindowsInput::IsKeyPressedImpl(int keycode) const
+	bool WindowsInput::IsKeyPressedImpl(KeyCode keycode) const
 	{
 		GLFWwindow* window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetActualWindow());
 		const int state = glfwGetKey(window, keycode);
@@ -16,7 +16,7 @@ namespace Genesis
 		return state == GLFW_PRESS || state == GLFW_REPEAT;
 	}
 
-	bool WindowsInput::IsMouseButtonPressedImpl(int button) const
+	bool WindowsInput::IsMouseButtonPressedImpl(MouseCode button) const
 	{
 		GLFWwindow* window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetActualWindow());
 		const int state = glfwGetMouseButton(window, button);

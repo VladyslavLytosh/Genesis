@@ -1,26 +1,27 @@
 #pragma once
 
 #include "Event.h"
+#include "Genesis/KeyCodes.h"
 
 namespace Genesis
 {
 	class GENESIS_API KeyEvent : public Event
 	{
 	public:
-		int GetKeyCode() const { return m_Keycode; }
+		KeyCode GetKeyCode() const { return m_Keycode; }
 
 		EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryKeyboard)
 	protected:
-		KeyEvent(int keycode)
+		KeyEvent(KeyCode keycode)
 		: m_Keycode(keycode) {}
 
-		int m_Keycode;
+		KeyCode m_Keycode;
 	};
 
 	class GENESIS_API KeyPressedEvent : public KeyEvent
 	{
 	public:
-		KeyPressedEvent(int keycode, int repeatCount)
+		KeyPressedEvent(KeyCode keycode, int repeatCount)
 		: KeyEvent(keycode), m_RepeatCount(repeatCount) {}
 
 		int GetRepeatCount() const { return m_RepeatCount; }
@@ -40,7 +41,7 @@ namespace Genesis
 	class GENESIS_API KeyReleasedEvent : public KeyEvent
 	{
 	public:
-		KeyReleasedEvent(int keycode)
+		KeyReleasedEvent(KeyCode keycode)
 		: KeyEvent(keycode) {}
 
 		std::string ToString() const override
@@ -56,7 +57,7 @@ namespace Genesis
 	class GENESIS_API KeyTypedEvent : public KeyEvent
 	{
 	public:
-		KeyTypedEvent(int keycode)
+		KeyTypedEvent(KeyCode keycode)
 			: KeyEvent(keycode) {}
 
 		std::string ToString() const override
