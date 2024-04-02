@@ -21,6 +21,7 @@ namespace Genesis
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
 
+		virtual void* GetActualWindow() const override { return m_Window; }
 	private:
 		void Init(const WindowProps& props);
 		void Shutdown();

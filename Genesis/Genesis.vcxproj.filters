@@ -65,6 +65,8 @@
       <Filter>Genesis</Filter>
     </ClInclude>
     <ClInclude Include="src\gspch.h" />
+    <ClInclude Include="src\Genesis\Input.h" />
+    <ClInclude Include="WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Genesis\Application.cpp">
@@ -89,5 +91,6 @@
       <Filter>Genesis\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\gspch.cpp" />
+    <ClCompile Include="WindowsInput.cpp" />
   </ItemGroup>
 </Project>
