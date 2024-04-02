@@ -11,8 +11,6 @@
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
 
-#include "Genesis/KeyCodes.h"
-
 namespace Genesis
 {
 	static ImGuiKey GenesisKeysToImGuiKeys(int key);
