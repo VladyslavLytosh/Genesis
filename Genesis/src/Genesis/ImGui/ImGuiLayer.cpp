@@ -148,9 +148,9 @@ namespace Genesis
 	bool ImGuiLayer::OnWindowResizeEvent(WindowResizeEvent& event)
 	{
         ImGuiIO& io = ImGui::GetIO();
-        io.DisplaySize = ImVec2(event.GetWidth(), event.GetHeight());
+        io.DisplaySize = ImVec2(static_cast<float>(event.GetWidth()), static_cast<float>(event.GetHeight()));
         io.DisplayFramebufferScale = ImVec2(1.0f, 1.0f);
-        glViewport(0, 0, event.GetWidth(), event.GetHeight());
+        glViewport(0, 0, static_cast<float>(event.GetWidth()), static_cast<float>(event.GetHeight()));
 
         return false;
 	}

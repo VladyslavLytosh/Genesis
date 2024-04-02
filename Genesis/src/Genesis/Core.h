@@ -10,6 +10,10 @@
 	#error Genesis only supports windows
 #endif
 
+#ifdef GS_DEBUG
+	#define GS_ENABLE_ASSERTS
+#endif
+
 #ifdef GS_ENABLE_ASSERTS
 	#define GS_CORE_ASSERT(x, ...) { if(!(x)) { GS_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 	#define GS_ASSERT(x, ...) { if(!(x)) { GS_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
