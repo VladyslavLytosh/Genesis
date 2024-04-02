@@ -1,5 +1,6 @@
 workspace "Genesis"
 	architecture "x64"
+	startproject "Sandbox"
 
 	configurations
 	{
@@ -16,14 +17,17 @@ IncludeDir["GLFW"] = "Genesis/vendor/GLFW/include"
 IncludeDir["Glad"] = "Genesis/vendor/Glad/include"
 IncludeDir["ImGui"] = "Genesis/vendor/imgui"
 
-include "Genesis/vendor/GLFW"
-include "Genesis/vendor/Glad"
-include "Genesis/vendor/imgui"
+group "Dependencies"
+	include "Genesis/vendor/GLFW"
+	include "Genesis/vendor/Glad"
+	include "Genesis/vendor/imgui"
+group ""
 
 project "Genesis"
 	location "Genesis"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -56,7 +60,6 @@ project "Genesis"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -68,28 +71,29 @@ project "Genesis"
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 	filter "configurations:Debug"
 		defines "GS_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "GS_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "GS_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -113,7 +117,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -123,15 +126,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "GS_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "GS_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "GS_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
