@@ -5,6 +5,7 @@
 #include "Genesis/Application.h"
 #include <imgui.h>
 #include "Genesis/Platform/OpenGL/ImGuiOpenGLRenderer.h"
+#include "Genesis/Input.h"
 
 // TEMP
 #include <GLFW/glfw3.h>
@@ -12,11 +13,12 @@
 
 namespace Genesis
 {
-    // TODO: UPDATE KEY MODIFIERS
-
+    // TEMP
 	static ImGuiKey ImGui_ImplGlfw_KeyToImGuiKey(int key);
 	static const char* GetClipboardText(void* user_data);
 	static void SetClipboardText(void* user_data, const char* text);
+
+    static void UpdateKeyModifiers();
 
 	ImGuiLayer::ImGuiLayer()
 		: Layer("ImGuiLayer")
@@ -93,6 +95,8 @@ namespace Genesis
 		ImGuiIO& io = ImGui::GetIO();
 		if (event.GetMouseButton() >= 0 && event.GetMouseButton() < ImGuiMouseButton_COUNT)
 		{
+            UpdateKeyModifiers();
+
 			io.AddMouseButtonEvent(event.GetMouseButton(), true);
 		}
 
@@ -122,6 +126,8 @@ namespace Genesis
 	{
         ImGuiIO& io = ImGui::GetIO();
         ImGuiKey imgui_key = ImGui_ImplGlfw_KeyToImGuiKey(event.GetKeyCode());
+
+        UpdateKeyModifiers();
 
         io.AddKeyEvent(imgui_key, true);
 
@@ -289,4 +295,13 @@ const char* Genesis::GetClipboardText(void* user_data)
 void Genesis::SetClipboardText(void* user_data, const char* text)
 {
     glfwSetClipboardString((GLFWwindow*)user_data, text);
+}
+
+void Genesis::UpdateKeyModifiers()
+{
+    ImGuiIO& io = ImGui::GetIO();
+    io.AddKeyEvent(ImGuiMod_Ctrl, Input::IsKeyPressed(GLFW_KEY_LEFT_CONTROL) || Input::IsKeyPressed(GLFW_KEY_RIGHT_CONTROL));
+    io.AddKeyEvent(ImGuiMod_Shift, Input::IsKeyPressed(GLFW_KEY_LEFT_SHIFT) || Input::IsKeyPressed(GLFW_KEY_RIGHT_SHIFT));
+    io.AddKeyEvent(ImGuiMod_Alt, Input::IsKeyPressed(GLFW_KEY_LEFT_ALT) || Input::IsKeyPressed(GLFW_KEY_RIGHT_ALT));
+    io.AddKeyEvent(ImGuiMod_Super, Input::IsKeyPressed(GLFW_KEY_LEFT_SUPER) || Input::IsKeyPressed(GLFW_KEY_RIGHT_SUPER));
 }
