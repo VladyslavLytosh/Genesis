@@ -7,9 +7,9 @@
 [submodule "Genesis/vendor/GLFW"]
 	path = Genesis/vendor/GLFW
 	url = https://github.com/VladyslavLytosh/glfw
-[submodule "Genesis/vendor/imgui"]
-	path = Genesis/vendor/imgui
-	url = https://github.com/VladyslavLytosh/imgui.git
 [submodule "Genesis/vendor/glm"]
 	path = Genesis/vendor/glm
 	url = git@github.com:g-truc/glm.git
+[submodule "Genesis/vendor/imgui"]
+	path = Genesis/vendor/imgui
+	url = git@github.com:VladyslavLytosh/imgui.git
