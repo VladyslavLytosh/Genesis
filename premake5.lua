@@ -16,6 +16,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Genesis/vendor/GLFW/include"
 IncludeDir["Glad"] = "Genesis/vendor/Glad/include"
 IncludeDir["ImGui"] = "Genesis/vendor/imgui"
+IncludeDir["glm"] = "Genesis/vendor/glm"
 
 group "Dependencies"
 	include "Genesis/vendor/GLFW"
@@ -38,7 +39,10 @@ project "Genesis"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -47,7 +51,8 @@ project "Genesis"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links 
@@ -107,7 +112,8 @@ project "Sandbox"
 	includedirs
 	{
 		"Genesis/vendor/spdlog/include",
-		"Genesis/src"
+		"Genesis/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links
