@@ -13,21 +13,13 @@ namespace Genesis
 		ImGuiLayer();
 		virtual ~ImGuiLayer();
 
-		void OnAttach() override;
-		void OnDetach() override;
-		void OnUpdate() override;
-		void OnEvent(Event& event) override;
+		virtual void OnAttach() override;
+		virtual void OnDetach() override;
+		virtual void OnImGuiRender() override;
 
+		void Begin();
+		void End();
 	private:
 		float m_Time = 0.0f;
-
-		bool OnMouseMovedEvent(MouseMovedEvent& event);
-		bool OnMouseButtonPressedEvent(MouseButtonPressedEvent& event);
-		bool OnMouseButtonReleasedEvent(MouseButtonReleasedEvent& event);
-		bool OnMouseScrolledEvent(MouseScrolledEvent& event);
-		bool OnKeyPressedEvent(KeyPressedEvent& event);
-		bool OnKeyReleasedEvent(KeyReleasedEvent& event);
-		bool OnWindowResizeEvent(WindowResizeEvent& event);
-		bool OnKeyTypedEvent(KeyTypedEvent& event);
 	};
 }

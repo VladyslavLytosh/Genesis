@@ -5,6 +5,8 @@
 #include "Genesis/LayerStack.h"
 #include "Genesis/Events/ApplicationEvent.h"
 
+#include "Genesis/ImGui/ImGuiLayer.h"
+
 namespace Genesis
 {
 	class GENESIS_API Application
@@ -27,6 +29,7 @@ namespace Genesis
 		bool OnWindowClose(WindowCloseEvent& event);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 

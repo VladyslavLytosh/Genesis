@@ -90,9 +90,6 @@
     <ClInclude Include="src\Genesis\MouseButtonCodes.h">
       <Filter>src\Genesis</Filter>
     </ClInclude>
-    <ClInclude Include="src\Genesis\Platform\OpenGL\ImGuiOpenGLRenderer.h">
-      <Filter>src\Genesis\Platform\OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="src\Genesis\Platform\Windows\WindowsInput.h">
       <Filter>src\Genesis\Platform\Windows</Filter>
     </ClInclude>
@@ -1370,9 +1367,6 @@
     <ClCompile Include="src\Genesis\Log.cpp">
       <Filter>src\Genesis</Filter>
     </ClCompile>
-    <ClCompile Include="src\Genesis\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
-      <Filter>src\Genesis\Platform\OpenGL</Filter>
-    </ClCompile>
     <ClCompile Include="src\Genesis\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Genesis\Platform\Windows</Filter>
     </ClCompile>
@@ -1382,5 +1376,6 @@
     <ClCompile Include="src\gspch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Genesis\ImGui\ImGuiBuild.cpp" />
   </ItemGroup>
 </Project>

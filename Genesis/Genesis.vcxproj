@@ -167,7 +167,6 @@
     <ClInclude Include="src\Genesis\LayerStack.h" />
     <ClInclude Include="src\Genesis\Log.h" />
     <ClInclude Include="src\Genesis\MouseButtonCodes.h" />
-    <ClInclude Include="src\Genesis\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Genesis\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Genesis\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Genesis\Window.h" />
@@ -591,11 +590,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Genesis\Application.cpp" />
+    <ClCompile Include="src\Genesis\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Genesis\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Genesis\Layer.cpp" />
     <ClCompile Include="src\Genesis\LayerStack.cpp" />
     <ClCompile Include="src\Genesis\Log.cpp" />
-    <ClCompile Include="src\Genesis\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Genesis\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Genesis\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\gspch.cpp">
