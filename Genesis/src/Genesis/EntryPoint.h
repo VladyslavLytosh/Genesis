@@ -1,7 +1,6 @@
 #pragma once
 
 #ifdef GS_PLATFORM_WINDOWS
-
 int main(int argc, char** argv)
 {
 	Genesis::Log::Init();
@@ -11,5 +10,4 @@ int main(int argc, char** argv)
 	app->Run();
 	delete app;
 }
-
 #endif

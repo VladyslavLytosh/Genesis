@@ -16,9 +16,6 @@
     <Filter Include="src\Genesis\Platform">
       <UniqueIdentifier>{FE9202D6-EA21-8C9F-9340-A09A7FAE9C45}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Genesis\Platform\OpenGL">
-      <UniqueIdentifier>{7232D896-DE3F-067D-6726-0268D332D233}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Genesis\Platform\Windows">
       <UniqueIdentifier>{385BFAC9-2416-EA75-CDCD-62C0B9673406}</UniqueIdentifier>
     </Filter>
@@ -1355,6 +1352,9 @@
     <ClCompile Include="src\Genesis\Application.cpp">
       <Filter>src\Genesis</Filter>
     </ClCompile>
+    <ClCompile Include="src\Genesis\ImGui\ImGuiBuild.cpp">
+      <Filter>src\Genesis\ImGui</Filter>
+    </ClCompile>
     <ClCompile Include="src\Genesis\ImGui\ImGuiLayer.cpp">
       <Filter>src\Genesis\ImGui</Filter>
     </ClCompile>
@@ -1376,6 +1376,5 @@
     <ClCompile Include="src\gspch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Genesis\ImGui\ImGuiBuild.cpp" />
   </ItemGroup>
 </Project>

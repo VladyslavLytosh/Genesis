@@ -42,6 +42,7 @@ namespace Genesis
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
 		{
 			(*--it)->OnEvent(event);
+			// If we mark the event as handled, there is no need to propagate it down to the layers.
 			if (event.m_Handled)
 			{
 				break;

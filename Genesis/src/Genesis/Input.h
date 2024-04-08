@@ -6,6 +6,11 @@
 
 namespace Genesis
 {
+	/**
+	 * \brief Input polling platform abstraction.
+	 * \remark The Input class is a singleton.
+	 * \remark A separate implementation is required for each platform.
+	 */
 	class GENESIS_API Input
 	{
 	public:
@@ -17,7 +22,6 @@ namespace Genesis
 
 	protected:
 		virtual bool IsKeyPressedImpl(KeyCode keycode) const = 0;
-
 		virtual bool IsMouseButtonPressedImpl(MouseCode button) const = 0;
 		virtual std::pair<float, float> GetMousePositionImpl() const = 0;
 		virtual float GetMouseXImpl() const = 0;
