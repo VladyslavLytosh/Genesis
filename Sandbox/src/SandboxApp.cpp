@@ -1,5 +1,7 @@
 #include <Genesis.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public Genesis::Layer
 {
 public:
@@ -11,6 +13,11 @@ public:
 	virtual void OnEvent(Genesis::Event& event) override
 	{
 		
+	}
+
+	virtual void OnImGuiRender() override
+	{
+
 	}
 };
 

@@ -12,14 +12,14 @@ namespace Genesis
 		WindowsWindow(const WindowProps& props);
 		virtual ~WindowsWindow();
 
-		void OnUpdate() override;
+		virtual void OnUpdate() override;
 
-		unsigned GetWidth() const override { return m_Data.Width; }
-		unsigned GetHeight() const override { return m_Data.Height; }
+		virtual unsigned GetWidth() const override { return m_Data.Width; }
+		virtual unsigned GetHeight() const override { return m_Data.Height; }
 
-		void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
-		void SetVSync(bool enabled) override;
-		bool IsVSync() const override;
+		virtual void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
+		virtual void SetVSync(bool enabled) override;
+		virtual bool IsVSync() const override;
 
 		virtual void* GetActualWindow() const override { return m_Window; }
 	private:

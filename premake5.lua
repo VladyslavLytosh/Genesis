@@ -113,7 +113,8 @@ project "Sandbox"
 	{
 		"Genesis/vendor/spdlog/include",
 		"Genesis/src",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"Genesis/vendor"
 	}
 
 	links

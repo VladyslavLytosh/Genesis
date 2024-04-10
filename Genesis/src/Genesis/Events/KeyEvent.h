@@ -26,7 +26,7 @@ namespace Genesis
 
 		int GetRepeatCount() const { return m_RepeatCount; }
 
-		std::string ToString() const override
+		virtual std::string ToString() const override
 		{
 			std::stringstream ss;
 			ss << "KeyPressedEvent: " << m_Keycode << " (" << m_RepeatCount << " repeats)";
@@ -44,7 +44,7 @@ namespace Genesis
 		KeyReleasedEvent(KeyCode keycode)
 		: KeyEvent(keycode) {}
 
-		std::string ToString() const override
+		virtual std::string ToString() const override
 		{
 			std::stringstream ss;
 			ss << "KeyReleasedEvent: " << m_Keycode;
@@ -60,7 +60,7 @@ namespace Genesis
 		KeyTypedEvent(KeyCode keycode)
 			: KeyEvent(keycode) {}
 
-		std::string ToString() const override
+		virtual std::string ToString() const override
 		{
 			std::stringstream ss;
 			ss << "KeyTypedEvent: " << m_Keycode;

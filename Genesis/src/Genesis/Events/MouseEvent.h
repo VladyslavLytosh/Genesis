@@ -14,7 +14,7 @@ namespace Genesis
 		float GetX() const { return m_MouseX; }
 		float GetY() const { return m_MouseY; }
 
-		std::string ToString() const override
+		virtual std::string ToString() const override
 		{
 			std::stringstream ss;
 			ss << "MouseMovedEvent " << m_MouseX << ", " << m_MouseY;
@@ -36,7 +36,7 @@ namespace Genesis
 		float GetXOffset() const { return m_XOffset; }
 		float GetYOffset() const { return m_YOffset; }
 
-		std::string ToString() const override
+		virtual std::string ToString() const override
 		{
 			std::stringstream ss;
 			ss << "MouseScrolledEvent: " << m_XOffset << ", " << m_YOffset;
@@ -68,7 +68,7 @@ namespace Genesis
 		MouseButtonPressedEvent(MouseCode button)
 			: MouseButtonEvent(button) {}
 
-		std::string ToString() const override
+		virtual std::string ToString() const override
 		{
 			std::stringstream ss;
 			ss << "MouseButtonPressedEvent: " << m_Button;
@@ -84,7 +84,7 @@ namespace Genesis
 		MouseButtonReleasedEvent(MouseCode button)
 			: MouseButtonEvent(button) {}
 
-		std::string ToString() const override
+		virtual std::string ToString() const override
 		{
 			std::stringstream ss;
 			ss << "MouseButtonReleasedEvent: " << m_Button;
