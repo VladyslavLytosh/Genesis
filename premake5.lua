@@ -26,9 +26,10 @@ group ""
 
 project "Genesis"
 	location "Genesis"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -63,8 +64,13 @@ project "Genesis"
 		"opengl32.lib"
 	}
 
+	defines
+	{
+		"_SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS",
+		"_CRT_SECURE_NO_WARNINGS",
+	}
+
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
@@ -74,31 +80,27 @@ project "Genesis"
 			"GLFW_INCLUDE_NONE"
 		}
 
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
-		}
-
 	filter "configurations:Debug"
 		defines "GS_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "GS_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "GS_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -122,8 +124,12 @@ project "Sandbox"
 		"Genesis"
 	}
 
+	defines
+	{
+		"_SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS",
+	}
+
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
@@ -134,14 +140,14 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "GS_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "GS_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "GS_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"

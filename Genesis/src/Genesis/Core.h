@@ -1,10 +1,14 @@
 #pragma once
 
 #ifdef GS_PLATFORM_WINDOWS
-	#ifdef GS_BUILD_DLL
-		#define GENESIS_API __declspec(dllexport)
+	#if GS_DYNAMIC_LINK
+			#ifdef GS_BUILD_DLL
+				#define GENESIS_API __declspec(dllexport)
+			#else
+				#define GENESIS_API __declspec(dllimport)
+			#endif
 	#else
-		#define GENESIS_API __declspec(dllimport)
+		#define GENESIS_API
 	#endif
 #else
 	#error Genesis only supports windows
