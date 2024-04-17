@@ -143,6 +143,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Genesis\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Genesis.h" />
     <ClInclude Include="src\Genesis\Application.h" />
     <ClInclude Include="src\Genesis\Core.h" />
@@ -160,6 +161,7 @@
     <ClInclude Include="src\Genesis\MouseButtonCodes.h" />
     <ClInclude Include="src\Genesis\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Genesis\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\Genesis\Renderer\RenderingContext.h" />
     <ClInclude Include="src\Genesis\Window.h" />
     <ClInclude Include="src\gspch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -580,6 +582,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Genesis\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Genesis\Application.cpp" />
     <ClCompile Include="src\Genesis\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Genesis\ImGui\ImGuiLayer.cpp" />

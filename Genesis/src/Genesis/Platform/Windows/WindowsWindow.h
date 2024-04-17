@@ -4,6 +4,8 @@
 
 #include <GLFW/glfw3.h>
 
+#include "Genesis/Renderer/RenderingContext.h"
+
 namespace Genesis
 {
 	class WindowsWindow : public Window
@@ -27,7 +29,7 @@ namespace Genesis
 		void Shutdown();
 
 		GLFWwindow* m_Window;
-
+		RenderingContext* m_Context;
 		struct WindowData
 		{
 			std::string Title;

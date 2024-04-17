@@ -10,7 +10,7 @@ namespace Genesis
 
 	Application::Application()
 	{
-		GS_CORE_ASSERT(!s_Instance, "Application alread exists!");
+		GS_CORE_ASSERT(!s_Instance, "Application alread exists!")
 		s_Instance = this;
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
@@ -60,7 +60,7 @@ namespace Genesis
 	{
 		while (m_Running)
 		{
-			glClearColor(1, 0, 1, 1);
+			glClearColor(0.1f, 0.1f, 0.1f, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			for (Layer* layer : m_LayerStack)
