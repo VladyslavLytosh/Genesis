@@ -143,6 +143,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Genesis\Renderer\Shader.h" />
     <ClInclude Include="src\Genesis\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Genesis.h" />
     <ClInclude Include="src\Genesis\Application.h" />
@@ -582,6 +583,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Genesis\Renderer\Shader.cpp" />
     <ClCompile Include="src\Genesis\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Genesis\Application.cpp" />
     <ClCompile Include="src\Genesis\ImGui\ImGuiBuild.cpp" />

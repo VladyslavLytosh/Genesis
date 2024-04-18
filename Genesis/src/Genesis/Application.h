@@ -6,6 +6,7 @@
 #include "Genesis/Events/ApplicationEvent.h"
 
 #include "Genesis/ImGui/ImGuiLayer.h"
+#include "Renderer/Shader.h"
 
 namespace Genesis
 {
@@ -48,7 +49,7 @@ namespace Genesis
 		LayerStack m_LayerStack;
 
 		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
-
+		std::unique_ptr<Shader> m_Shader;
 		static Application* s_Instance;
 	};
 

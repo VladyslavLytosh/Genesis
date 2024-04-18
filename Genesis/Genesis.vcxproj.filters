@@ -1349,6 +1349,7 @@
     </ClInclude>
     <ClInclude Include="src\Genesis\Renderer\RenderingContext.h" />
     <ClInclude Include="src\Genesis\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Genesis\Renderer\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Genesis\Application.cpp">
@@ -1379,5 +1380,6 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\Genesis\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Genesis\Renderer\Shader.cpp" />
   </ItemGroup>
 </Project>
