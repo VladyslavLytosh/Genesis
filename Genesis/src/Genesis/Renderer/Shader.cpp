@@ -107,7 +107,7 @@ namespace Genesis
 		glUseProgram(m_RendererID);
 	}
 
-	void Shader::Unbind() const
+	void Shader::UnBind() const
 	{
 		glUseProgram(0);
 	}

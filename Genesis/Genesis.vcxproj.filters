@@ -1349,6 +1349,9 @@
     </ClInclude>
     <ClInclude Include="src\Genesis\Renderer\RenderingContext.h" />
     <ClInclude Include="src\Genesis\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Genesis\Renderer\Buffer.h" />
+    <ClInclude Include="src\Genesis\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Genesis\Renderer\Renderer.h" />
     <ClInclude Include="src\Genesis\Renderer\Shader.h" />
   </ItemGroup>
   <ItemGroup>
@@ -1381,5 +1384,8 @@
     </ClCompile>
     <ClCompile Include="src\Genesis\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Genesis\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Genesis\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Genesis\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Genesis\Renderer\Renderer.cpp" />
   </ItemGroup>
 </Project>

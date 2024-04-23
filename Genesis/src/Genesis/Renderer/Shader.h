@@ -11,7 +11,7 @@ namespace Genesis
 		~Shader();
 
 		void Bind() const;
-		void Unbind() const;
+		void UnBind() const;
 
 	private:
 		uint32_t m_RendererID;
