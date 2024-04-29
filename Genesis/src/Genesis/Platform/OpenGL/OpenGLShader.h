@@ -2,8 +2,6 @@
 
 #include "Genesis/Renderer/Shader.h"
 
-class std::string;
-
 namespace Genesis
 {
 	class OpenGLShader : public Shader

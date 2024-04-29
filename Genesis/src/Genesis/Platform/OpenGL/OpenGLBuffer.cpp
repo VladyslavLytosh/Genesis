@@ -38,7 +38,7 @@ namespace Genesis
 		: m_Count(count)
 	{
 		glCreateBuffers(1, &m_RendererID);
-		glNamedBufferStorage(m_RendererID, count * sizeof(uint32_t), indices, 0);
+		glNamedBufferStorage(m_RendererID, (long long)count * sizeof(uint32_t), indices, 0);
 	}
 
 	OpenGLIndexBuffer::~OpenGLIndexBuffer()

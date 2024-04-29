@@ -25,7 +25,7 @@ namespace Genesis
 	 */
 	class GENESIS_API Window
 	{
-	public:
+	public: 
 		using EventCallbackFn = std::function<void(Event&)>;
 
 		virtual ~Window() {}
