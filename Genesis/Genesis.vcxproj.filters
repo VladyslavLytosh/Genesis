@@ -16,8 +16,14 @@
     <Filter Include="src\Genesis\Platform">
       <UniqueIdentifier>{FE9202D6-EA21-8C9F-9340-A09A7FAE9C45}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Genesis\Platform\OpenGL">
+      <UniqueIdentifier>{7232D896-DE3F-067D-6726-0268D332D233}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Genesis\Platform\Windows">
       <UniqueIdentifier>{385BFAC9-2416-EA75-CDCD-62C0B9673406}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Genesis\Renderer">
+      <UniqueIdentifier>{509ADFB0-3C29-697A-E547-7D75D1B57920}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -87,11 +93,32 @@
     <ClInclude Include="src\Genesis\MouseButtonCodes.h">
       <Filter>src\Genesis</Filter>
     </ClInclude>
+    <ClInclude Include="src\Genesis\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Genesis\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Genesis\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Genesis\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Genesis\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\Genesis\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Genesis\Platform\Windows\WindowsInput.h">
       <Filter>src\Genesis\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Genesis\Platform\Windows\WindowsWindow.h">
       <Filter>src\Genesis\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Genesis\Renderer\Buffer.h">
+      <Filter>src\Genesis\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Genesis\Renderer\Renderer.h">
+      <Filter>src\Genesis\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Genesis\Renderer\RenderingContext.h">
+      <Filter>src\Genesis\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Genesis\Renderer\Shader.h">
+      <Filter>src\Genesis\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Genesis\Window.h">
       <Filter>src\Genesis</Filter>
@@ -1347,13 +1374,6 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Genesis\Renderer\RenderingContext.h" />
-    <ClInclude Include="src\Genesis\Platform\OpenGL\OpenGLContext.h" />
-    <ClInclude Include="src\Genesis\Renderer\Buffer.h" />
-    <ClInclude Include="src\Genesis\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\Genesis\Renderer\Renderer.h" />
-    <ClInclude Include="src\Genesis\Renderer\Shader.h" />
-    <ClInclude Include="src\Genesis\Platform\OpenGL\OpenGLShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Genesis\Application.cpp">
@@ -1374,20 +1394,32 @@
     <ClCompile Include="src\Genesis\Log.cpp">
       <Filter>src\Genesis</Filter>
     </ClCompile>
+    <ClCompile Include="src\Genesis\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Genesis\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Genesis\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Genesis\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Genesis\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Genesis\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Genesis\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Genesis\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Genesis\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Genesis\Platform\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="src\Genesis\Renderer\Buffer.cpp">
+      <Filter>src\Genesis\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Genesis\Renderer\Renderer.cpp">
+      <Filter>src\Genesis\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Genesis\Renderer\Shader.cpp">
+      <Filter>src\Genesis\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\gspch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Genesis\Platform\OpenGL\OpenGLContext.cpp" />
-    <ClCompile Include="src\Genesis\Renderer\Shader.cpp" />
-    <ClCompile Include="src\Genesis\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Genesis\Platform\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\Genesis\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Genesis\Platform\OpenGL\OpenGLShader.cpp" />
   </ItemGroup>
 </Project>

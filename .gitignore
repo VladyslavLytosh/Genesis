@@ -1,8 +1,15 @@
 # Directories
 .vs/
-/bin/
+**/bin/
 bin-int/
 
-Genesis/vendor/Glad/bin
+# Visual Studio files and folder
+.vs/
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
+**.csproj
+
 # Files
 *.user
