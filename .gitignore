@@ -1,7 +1,8 @@
 # Directories
 .vs/
-bin/
+/bin/
 bin-int/
 
+Genesis/vendor/Glad/bin
 # Files
 *.user
