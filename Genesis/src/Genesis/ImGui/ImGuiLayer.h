@@ -1,25 +1,26 @@
 #pragma once
 
-#include "Genesis/Layer.h"
 #include "Genesis/Events/ApplicationEvent.h"
 #include "Genesis/Events/KeyEvent.h"
 #include "Genesis/Events/MouseEvent.h"
+#include "Genesis/Layer.h"
 
 namespace Genesis
 {
-	class GENESIS_API ImGuiLayer : public Layer
-	{
-	public:
-		ImGuiLayer();
-		virtual ~ImGuiLayer();
+    class GENESIS_API ImGuiLayer : public Layer
+    {
+      public:
+        ImGuiLayer();
+        virtual ~ImGuiLayer();
 
-		virtual void OnAttach() override;
-		virtual void OnDetach() override;
-		virtual void OnImGuiRender() override;
+        virtual void OnAttach() override;
+        virtual void OnDetach() override;
+        virtual void OnImGuiRender() override;
 
-		void Begin();
-		void End();
-	private:
-		float m_Time = 0.0f;
-	};
-}
+        void Begin();
+        void End();
+
+      private:
+        float m_Time = 0.0f;
+    };
+}  // namespace Genesis

@@ -1,0 +1,12 @@
+Language: Cpp
+BasedOnStyle: Microsoft
+IndentWidth: 4
+UseTab: Never
+BreakBeforeBraces: Allman
+PointerAlignment: Left
+SpacesBeforeTrailingComments: 2
+ColumnLimit: 140
+NamespaceIndentation: All
+AllowShortFunctionsOnASingleLine: Inline
+IndentPPDirectives: BeforeHash
+SortIncludes: Never

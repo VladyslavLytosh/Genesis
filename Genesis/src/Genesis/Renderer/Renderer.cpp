@@ -4,5 +4,5 @@
 
 namespace Genesis
 {
-	RendererAPI Renderer::s_RendererAPI = RendererAPI::OpenGL;
+    RendererAPI Renderer::s_RendererAPI = RendererAPI::OpenGL;
 }
