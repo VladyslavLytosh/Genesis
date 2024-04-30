@@ -7,7 +7,7 @@
 
 #include "Genesis/ImGui/ImGuiLayer.h"
 #include "Renderer/Shader.h"
-#include "Renderer/Buffer.h"
+#include "Renderer/VertexArray.h"
 
 namespace Genesis
 {
@@ -20,7 +20,7 @@ namespace Genesis
      */
     class GENESIS_API Application
     {
-      public:
+    public:
         Application();
         virtual ~Application();
         /**
@@ -40,7 +40,7 @@ namespace Genesis
         static Application& Get() { return *s_Instance; }
         Window& GetWindow() const { return *m_Window; }
 
-      private:
+    private:
         bool OnWindowClose(WindowCloseEvent& event);
 
         std::unique_ptr<Window> m_Window;
@@ -49,10 +49,8 @@ namespace Genesis
         bool m_Running = true;
         LayerStack m_LayerStack;
 
-        unsigned int m_VertexArray;
-        std::unique_ptr<Shader> m_Shader;
-        std::unique_ptr<VertexBuffer> m_VertexBuffer;
-        std::unique_ptr<IndexBuffer> m_IndexBuffer;
+        std::shared_ptr<Shader> m_Shader;
+        std::shared_ptr<VertexArray> m_VertexArray;
 
         static Application* s_Instance;
     };

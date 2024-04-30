@@ -1,43 +1,13 @@
 #include "gspch.h"
 
 #include "Application.h"
+
+// TEMP
 #include <glad/glad.h>
 
 namespace Genesis
 {
     Application* Application::s_Instance = nullptr;
-
-    static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)
-    {
-        switch (type)
-        {
-        case ShaderDataType::Float:
-            return GL_FLOAT;
-        case ShaderDataType::Float2:
-            return GL_FLOAT;
-        case ShaderDataType::Float3:
-            return GL_FLOAT;
-        case ShaderDataType::Float4:
-            return GL_FLOAT;
-        case ShaderDataType::Mat3:
-            return GL_FLOAT;
-        case ShaderDataType::Mat4:
-            return GL_FLOAT;
-        case ShaderDataType::Int:
-            return GL_INT;
-        case ShaderDataType::Int2:
-            return GL_INT;
-        case ShaderDataType::Int3:
-            return GL_INT;
-        case ShaderDataType::Int4:
-            return GL_INT;
-        case ShaderDataType::Bool:
-            return GL_BOOL;
-        }
-
-        GS_CORE_ASSERT(false, "Unknown ShaderDataType!")
-        return 0;
-    }
 
     Application::Application()
     {
@@ -50,6 +20,7 @@ namespace Genesis
         m_ImGuiLayer = new ImGuiLayer();
         PushOverlay(m_ImGuiLayer);
 
+        m_VertexArray.reset(VertexArray::Create());
         // clang-format off
         float vertices[] = 
         {
@@ -59,30 +30,14 @@ namespace Genesis
         };
         // clang-format on
 
-        glGenVertexArrays(1, &m_VertexArray);
-        glBindVertexArray(m_VertexArray);
+        std::shared_ptr<VertexBuffer> vertexBuffer(VertexBuffer::Create(vertices, sizeof(vertices)));
+        const BufferLayout layout = {
+            {ShaderDataType::Float3, "a_Position"},
+            {ShaderDataType::Float3, "a_Color"},
+        };
 
-        m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
-        m_VertexBuffer->Bind();
-        {
-            const BufferLayout layout = {
-                {ShaderDataType::Float3, "a_Position"},
-                {ShaderDataType::Float3, "a_Color"},
-            };
-
-            m_VertexBuffer->SetLayout(layout);
-        }
-
-        const auto& layout = m_VertexBuffer->GetLayout();
-
-        uint32_t index = 0;
-        for (const auto& element : layout)
-        {
-            glEnableVertexAttribArray(index);
-            glVertexAttribPointer(index, element.GetComponentCount(), ShaderDataTypeToOpenGLBaseType(element.Type), element.Normalized,
-                                  (int)layout.GetStride(), (const void*)element.Offset);
-            ++index;
-        }
+        vertexBuffer->SetLayout(layout);
+        m_VertexArray->AddVertexBuffer(vertexBuffer);
 
         // clang-format off
         uint32_t indices[] = 
@@ -91,11 +46,12 @@ namespace Genesis
         };
         // clang-format on
 
-        m_IndexBuffer.reset(IndexBuffer::Create(indices, 3));
-        m_IndexBuffer->Bind();
+        std::shared_ptr<IndexBuffer> indexBuffer(IndexBuffer::Create(indices, 3));
+        m_VertexArray->SetIndexBuffer(indexBuffer);
+
         // clang-format off
         std::string vertexSrc = R"(
-			    #version 330 core
+			    #version 460 core
 			    
 			    layout(location = 0) in vec3 a_Position;
 			    layout (location = 1) in vec3 a_Color;
@@ -109,7 +65,7 @@ namespace Genesis
 		    )";
 
         std::string fragmentSrc = R"(
-			    #version 330 core
+			    #version 460 core
 			    
 			    out vec4 color;
 			    in vec3 ourColor;
@@ -123,7 +79,9 @@ namespace Genesis
         m_Shader.reset(Shader::Create(vertexSrc, fragmentSrc));
     }
 
-    Application::~Application() {}
+    Application::~Application()
+    {
+    }
 
     void Application::PushLayer(Layer* layer)
     {
@@ -168,7 +126,8 @@ namespace Genesis
             glClear(GL_COLOR_BUFFER_BIT);
 
             m_Shader->Bind();
-            glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
+            m_VertexArray->Bind();
+            glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
 
             for (Layer* layer : m_LayerStack)
             {

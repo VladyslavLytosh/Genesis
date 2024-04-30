@@ -12,7 +12,7 @@ namespace Genesis
     OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t size)
     {
         glCreateBuffers(1, &m_RendererID);
-        glNamedBufferStorage(m_RendererID, size, vertices, 0);
+        glNamedBufferData(m_RendererID, size, vertices, GL_STATIC_DRAW);
     }
 
     OpenGLVertexBuffer::~OpenGLVertexBuffer()
@@ -25,7 +25,7 @@ namespace Genesis
         glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
     }
 
-    void OpenGLVertexBuffer::UnBind() const
+    void OpenGLVertexBuffer::Unbind() const
     {
         glBindBuffer(GL_ARRAY_BUFFER, 0);
     }
@@ -37,7 +37,7 @@ namespace Genesis
     OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* indices, uint32_t count) : m_Count(count)
     {
         glCreateBuffers(1, &m_RendererID);
-        glNamedBufferStorage(m_RendererID, (long long)count * sizeof(uint32_t), indices, 0);
+        glNamedBufferData(m_RendererID, (long long)count * sizeof(uint32_t), indices, GL_STATIC_DRAW);
     }
 
     OpenGLIndexBuffer::~OpenGLIndexBuffer()
