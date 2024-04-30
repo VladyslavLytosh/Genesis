@@ -6,8 +6,6 @@
 #include "Genesis/Events/ApplicationEvent.h"
 
 #include "Genesis/ImGui/ImGuiLayer.h"
-#include "Renderer/Shader.h"
-#include "Renderer/VertexArray.h"
 
 namespace Genesis
 {
@@ -22,7 +20,7 @@ namespace Genesis
     {
     public:
         Application();
-        virtual ~Application();
+        virtual ~Application() = default;
         /**
          * \brief Runs the game loop (until the game is stopped).
          */
@@ -48,9 +46,6 @@ namespace Genesis
         ImGuiLayer* m_ImGuiLayer;
         bool m_Running = true;
         LayerStack m_LayerStack;
-
-        std::shared_ptr<Shader> m_Shader;
-        std::shared_ptr<VertexArray> m_VertexArray;
 
         static Application* s_Instance;
     };

@@ -6,6 +6,7 @@ struct GLFWwindow;
 
 namespace Genesis
 {
+    // TODO: Add OpenGL error handling
     class OpenGLContext : public RenderingContext
     {
     public:

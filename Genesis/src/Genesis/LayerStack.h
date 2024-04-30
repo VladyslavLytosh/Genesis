@@ -12,7 +12,7 @@ namespace Genesis
     class GENESIS_API LayerStack
     {
     public:
-        LayerStack();
+        LayerStack() = default;
         virtual ~LayerStack();
         /**
          * \brief Pushes a layer after the last layer that was pushed.

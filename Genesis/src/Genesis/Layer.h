@@ -11,7 +11,7 @@ namespace Genesis
     {
     public:
         Layer(const std::string& name = "Layer");
-        virtual ~Layer();
+        virtual ~Layer() = default;
         /**
          * \brief Called when a layer is added to the layer stack.
          */
