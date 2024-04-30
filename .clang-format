@@ -7,6 +7,9 @@ PointerAlignment: Left
 SpacesBeforeTrailingComments: 2
 ColumnLimit: 140
 NamespaceIndentation: All
-AllowShortFunctionsOnASingleLine: Inline
+AllowShortFunctionsOnASingleLine: InlineOnly
 IndentPPDirectives: BeforeHash
 SortIncludes: Never
+EmptyLineBeforeAccessModifier: LogicalBlock
+IndentAccessModifiers: false
+AccessModifierOffset: -4

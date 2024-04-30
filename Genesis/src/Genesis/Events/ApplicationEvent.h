@@ -6,7 +6,7 @@ namespace Genesis
 {
     class GENESIS_API WindowResizeEvent : public Event
     {
-      public:
+    public:
         WindowResizeEvent(unsigned int width, unsigned int height) : m_Width(width), m_Height(height) {}
 
         unsigned int GetWidth() const { return m_Width; }
@@ -21,13 +21,13 @@ namespace Genesis
 
         EVENT_CLASS_TYPE(WindowResize)
         EVENT_CLASS_CATEGORY(EventCategoryApplication)
-      private:
+    private:
         unsigned int m_Width, m_Height;
     };
 
     class GENESIS_API WindowCloseEvent : public Event
     {
-      public:
+    public:
         WindowCloseEvent() = default;
 
         EVENT_CLASS_TYPE(WindowClose)
@@ -36,7 +36,7 @@ namespace Genesis
 
     class GENESIS_API AppTickEvent : public Event
     {
-      public:
+    public:
         AppTickEvent() = default;
 
         EVENT_CLASS_TYPE(AppTick)
@@ -45,7 +45,7 @@ namespace Genesis
 
     class GENESIS_API AppUpdateEvent : public Event
     {
-      public:
+    public:
         AppUpdateEvent() = default;
 
         EVENT_CLASS_TYPE(AppUpdate)
@@ -54,7 +54,7 @@ namespace Genesis
 
     class GENESIS_API AppRenderEvent : public Event
     {
-      public:
+    public:
         AppRenderEvent() = default;
 
         EVENT_CLASS_TYPE(AppRender)

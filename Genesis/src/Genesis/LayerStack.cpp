@@ -3,7 +3,9 @@
 
 namespace Genesis
 {
-    LayerStack::LayerStack() {}
+    LayerStack::LayerStack()
+    {
+    }
 
     LayerStack::~LayerStack()
     {

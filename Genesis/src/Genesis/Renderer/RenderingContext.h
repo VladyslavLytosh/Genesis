@@ -4,7 +4,7 @@ namespace Genesis
 {
     class RenderingContext
     {
-      public:
+    public:
         virtual void Init() = 0;
         virtual void SwapBuffers() = 0;
     };

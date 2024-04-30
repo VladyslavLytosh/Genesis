@@ -7,11 +7,11 @@ namespace Genesis
 {
     class GENESIS_API KeyEvent : public Event
     {
-      public:
+    public:
         KeyCode GetKeyCode() const { return m_Keycode; }
 
         EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryKeyboard)
-      protected:
+    protected:
         KeyEvent(KeyCode keycode) : m_Keycode(keycode) {}
 
         KeyCode m_Keycode;
@@ -19,7 +19,7 @@ namespace Genesis
 
     class GENESIS_API KeyPressedEvent : public KeyEvent
     {
-      public:
+    public:
         KeyPressedEvent(KeyCode keycode, int repeatCount) : KeyEvent(keycode), m_RepeatCount(repeatCount) {}
 
         int GetRepeatCount() const { return m_RepeatCount; }
@@ -32,13 +32,13 @@ namespace Genesis
         }
 
         EVENT_CLASS_TYPE(KeyPressed)
-      private:
+    private:
         int m_RepeatCount;
     };
 
     class GENESIS_API KeyReleasedEvent : public KeyEvent
     {
-      public:
+    public:
         KeyReleasedEvent(KeyCode keycode) : KeyEvent(keycode) {}
 
         virtual std::string ToString() const override
@@ -53,7 +53,7 @@ namespace Genesis
 
     class GENESIS_API KeyTypedEvent : public KeyEvent
     {
-      public:
+    public:
         KeyTypedEvent(KeyCode keycode) : KeyEvent(keycode) {}
 
         virtual std::string ToString() const override

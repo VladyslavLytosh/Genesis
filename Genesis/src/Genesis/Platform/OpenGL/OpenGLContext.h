@@ -8,13 +8,13 @@ namespace Genesis
 {
     class OpenGLContext : public RenderingContext
     {
-      public:
+    public:
         OpenGLContext(GLFWwindow* windowHandle);
 
         virtual void Init() override;
         virtual void SwapBuffers() override;
 
-      private:
+    private:
         GLFWwindow* m_WindowHandle;
     };
 }  // namespace Genesis

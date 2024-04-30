@@ -6,7 +6,7 @@ namespace Genesis
 {
     class WindowsInput : public Input
     {
-      protected:
+    protected:
         virtual bool IsKeyPressedImpl(KeyCode keycode) const override;
 
         virtual bool IsMouseButtonPressedImpl(MouseCode button) const override;

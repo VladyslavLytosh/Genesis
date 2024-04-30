@@ -9,7 +9,7 @@ namespace Genesis
      */
     class GENESIS_API Layer
     {
-      public:
+    public:
         Layer(const std::string& name = "Layer");
         virtual ~Layer();
         /**
@@ -32,7 +32,7 @@ namespace Genesis
 
         const std::string& GetName() const { return m_DebugName; }
 
-      protected:
+    protected:
         std::string m_DebugName;
     };
 }  // namespace Genesis

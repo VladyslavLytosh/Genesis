@@ -7,7 +7,7 @@ namespace Genesis
 {
     class GENESIS_API MouseMovedEvent : public Event
     {
-      public:
+    public:
         MouseMovedEvent(float x, float y) : m_MouseX(x), m_MouseY(y) {}
 
         float GetX() const { return m_MouseX; }
@@ -22,13 +22,13 @@ namespace Genesis
 
         EVENT_CLASS_TYPE(MouseMoved)
         EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse)
-      private:
+    private:
         float m_MouseX, m_MouseY;
     };
 
     class GENESIS_API MouseScrolledEvent : public Event
     {
-      public:
+    public:
         MouseScrolledEvent(float xOffset, float yOffset) : m_XOffset(xOffset), m_YOffset(yOffset) {}
 
         float GetXOffset() const { return m_XOffset; }
@@ -43,17 +43,17 @@ namespace Genesis
 
         EVENT_CLASS_TYPE(MouseScrolled)
         EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse)
-      private:
+    private:
         float m_XOffset, m_YOffset;
     };
 
     class GENESIS_API MouseButtonEvent : public Event
     {
-      public:
+    public:
         int GetMouseButton() const { return m_Button; }
 
         EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
-      protected:
+    protected:
         MouseButtonEvent(MouseCode button) : m_Button(button) {}
 
         MouseCode m_Button;
@@ -61,7 +61,7 @@ namespace Genesis
 
     class GENESIS_API MouseButtonPressedEvent : public MouseButtonEvent
     {
-      public:
+    public:
         MouseButtonPressedEvent(MouseCode button) : MouseButtonEvent(button) {}
 
         virtual std::string ToString() const override
@@ -76,7 +76,7 @@ namespace Genesis
 
     class GENESIS_API MouseButtonReleasedEvent : public MouseButtonEvent
     {
-      public:
+    public:
         MouseButtonReleasedEvent(MouseCode button) : MouseButtonEvent(button) {}
 
         virtual std::string ToString() const override

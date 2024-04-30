@@ -10,7 +10,7 @@ namespace Genesis
 {
     class WindowsWindow : public Window
     {
-      public:
+    public:
         WindowsWindow(const WindowProps& props);
         virtual ~WindowsWindow();
 
@@ -25,7 +25,7 @@ namespace Genesis
 
         virtual void* GetActualWindow() const override { return m_Window; }
 
-      private:
+    private:
         void Init(const WindowProps& props);
         void Shutdown();
 

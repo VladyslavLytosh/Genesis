@@ -66,7 +66,7 @@ namespace Genesis
     {
         friend class EventDispatcher;
 
-      public:
+    public:
         bool m_Handled = false;
 
         virtual EventType GetEventType() const = 0;
@@ -81,7 +81,7 @@ namespace Genesis
     {
         template <typename T> using EventFn = std::function<bool(T&)>;
 
-      public:
+    public:
         EventDispatcher(Event& event) : m_Event(event) {}
 
         template <typename T> bool Dispatch(EventFn<T> func)
@@ -94,7 +94,7 @@ namespace Genesis
             return false;
         }
 
-      private:
+    private:
         Event& m_Event;
     };
 

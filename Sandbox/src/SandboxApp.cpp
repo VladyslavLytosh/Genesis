@@ -4,7 +4,7 @@
 
 class ExampleLayer : public Genesis::Layer
 {
-  public:
+public:
     virtual void OnUpdate() override {}
 
     virtual void OnEvent(Genesis::Event& event) override {}
@@ -14,7 +14,7 @@ class ExampleLayer : public Genesis::Layer
 
 class Sandbox : public Genesis::Application
 {
-  public:
+public:
     Sandbox() { PushLayer(new ExampleLayer()); }
 
     virtual ~Sandbox() override {}

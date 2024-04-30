@@ -10,10 +10,10 @@ namespace Genesis
 
     class Renderer
     {
-      public:
+    public:
         static RendererAPI GetAPI() { return s_RendererAPI; }
 
-      private:
+    private:
         static RendererAPI s_RendererAPI;
     };
 }  // namespace Genesis

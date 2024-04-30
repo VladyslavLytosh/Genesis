@@ -9,7 +9,7 @@ namespace Genesis
 {
     class GENESIS_API ImGuiLayer : public Layer
     {
-      public:
+    public:
         ImGuiLayer();
         virtual ~ImGuiLayer();
 
@@ -20,7 +20,7 @@ namespace Genesis
         void Begin();
         void End();
 
-      private:
+    private:
         float m_Time = 0.0f;
     };
 }  // namespace Genesis

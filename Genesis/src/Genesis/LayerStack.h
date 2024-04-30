@@ -11,7 +11,7 @@ namespace Genesis
      */
     class GENESIS_API LayerStack
     {
-      public:
+    public:
         LayerStack();
         virtual ~LayerStack();
         /**
@@ -38,7 +38,7 @@ namespace Genesis
         std::vector<Layer*>::iterator begin() { return m_Layers.begin(); }
         std::vector<Layer*>::iterator end() { return m_Layers.end(); }
 
-      private:
+    private:
         std::vector<Layer*> m_Layers;
         // Index of the last pushed layer plus 1 (used to push layers before overlays).
         unsigned int m_LayerInsertIndex = 0;
