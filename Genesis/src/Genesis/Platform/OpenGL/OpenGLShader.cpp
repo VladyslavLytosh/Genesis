@@ -6,61 +6,160 @@
 
 namespace Genesis
 {
+    OpenGLShader::OpenGLShader(const std::string& filePath) : m_filePath(std::move(filePath))
+    {
+        const ShaderProgramSource shaderSource = ParseShader();
+        if (!shaderSource.IsValid())
+        {
+            return;
+        }
+        const unsigned int vertexShader = CompileShader(shaderSource.vertexSource, GL_VERTEX_SHADER);
+        const unsigned int fragmentShader = CompileShader(shaderSource.fragmentSource, GL_FRAGMENT_SHADER);
+
+        CreateAndLinkShaderProgram(vertexShader, fragmentShader);
+    }
+
     OpenGLShader::OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc)
     {
-        // Create an empty vertex shader handle
-        const unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
+        const unsigned int vertexShader = CompileShader(vertexSrc, GL_VERTEX_SHADER);
+        const unsigned int fragmentShader = CompileShader(fragmentSrc, GL_FRAGMENT_SHADER);
 
-        // Send the vertex shader source code to GL
-        // Note that std::string's .c_str is NULL character terminated.
-        const char* source = vertexSrc.c_str();
-        glShaderSource(vertexShader, 1, &source, nullptr);
+        CreateAndLinkShaderProgram(vertexShader, fragmentShader);
+    }
+
+    OpenGLShader::~OpenGLShader()
+    {
+        glDeleteProgram(0);
+    }
+
+    void OpenGLShader::Bind() const
+    {
+        glUseProgram(m_RendererID);
+    }
+
+    void OpenGLShader::UnBind() const
+    {
+        glUseProgram(0);
+    }
+
+    void OpenGLShader::setBool(const std::string& name, bool value) const
+    {
+        glUniform1i(glGetUniformLocation(m_RendererID, name.c_str()), value);
+    }
+
+    void OpenGLShader::setIntUnf(const std::string& name, int value) const
+    {
+        glUniform1i(glGetUniformLocation(m_RendererID, name.c_str()), value);
+    }
+
+    void OpenGLShader::setIntUnf(const std::string& name, glm::ivec2 value) const
+    {
+        glUniform2i(glGetUniformLocation(m_RendererID, name.c_str()), value.x, value.y);
+    }
+
+    void OpenGLShader::setIntUnf(const std::string& name, glm::ivec3 value) const
+    {
+        glUniform3i(glGetUniformLocation(m_RendererID, name.c_str()), value.x, value.y, value.z);
+    }
+
+    void OpenGLShader::setIntUnf(const std::string& name, glm::ivec4 value) const
+    {
+        glUniform4i(glGetUniformLocation(m_RendererID, name.c_str()), value.x, value.y, value.z, value.w);
+    }
+
+    void OpenGLShader::setFloatUnf(const std::string& name, float value) const
+    {
+        glUniform1f(glGetUniformLocation(m_RendererID, name.c_str()), value);
+    }
+
+    void OpenGLShader::setFloatUnf(const std::string& name, glm::vec2 value) const
+    {
+        glUniform2f(glGetUniformLocation(m_RendererID, name.c_str()), value.x, value.y);
+    }
+
+    void OpenGLShader::setFloatUnf(const std::string& name, glm::vec3 value) const
+    {
+        glUniform3f(glGetUniformLocation(m_RendererID, name.c_str()), value.x, value.y, value.z);
+    }
+
+    void OpenGLShader::setFloatUnf(const std::string& name, glm::vec4 value) const
+    {
+        glUniform4f(glGetUniformLocation(m_RendererID, name.c_str()), value.x, value.y, value.z, value.w);
+    }
+
+    OpenGLShader::ShaderProgramSource OpenGLShader::ParseShader()
+    {
+        std::ifstream stream(m_filePath);
+
+        if (!stream.good())
+        {
+            GS_CORE_CRITICAL("Can't open file {0}", m_filePath);
+            return {"", ""};
+        }
+
+        enum class ShaderType
+        {
+            NONE = -1,
+            VERTEX = 0,
+            FRAGMENT = 1
+        };
+
+        std::string line;
+        std::stringstream ss[2];
+        ShaderType type = ShaderType::NONE;
+
+        while (getline(stream, line))
+        {
+            if (line.find("#shader") != std::string::npos)
+            {
+                if (line.find("vertex") != std::string::npos)
+                {
+                    type = ShaderType::VERTEX;
+                }
+                else if (line.find("fragment") != std::string::npos)
+                {
+                    type = ShaderType::FRAGMENT;
+                }
+            }
+            else
+            {
+                ss[(int)type] << line << '\n';
+            }
+        }
+
+        return {ss[0].str(), ss[1].str()};
+    }
+    unsigned int OpenGLShader::CompileShader(const std::string& shaderSource, int shaderType)
+    {
+        const unsigned int shader = glCreateShader(shaderType);
+        const char* source = shaderSource.c_str();
+        glShaderSource(shader, 1, &source, nullptr);
 
         // Compile the vertex shader
-        glCompileShader(vertexShader);
+        glCompileShader(shader);
 
         int success = 0;
-        glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
+        glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
         if (success == GL_FALSE)
         {
             int messageSize = 0;
-            glGetShaderiv(vertexShader, GL_INFO_LOG_LENGTH, &messageSize);
+            glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &messageSize);
 
             // The messageSize includes the NULL character
             std::vector<char> errorMessage(messageSize);
-            glGetShaderInfoLog(vertexShader, messageSize, nullptr, errorMessage.data());
+            glGetShaderInfoLog(shader, messageSize, nullptr, errorMessage.data());
 
             // We don't need the shader anymore.
-            glDeleteShader(vertexShader);
+            glDeleteShader(shader);
 
             GS_CORE_ERROR("{0}", errorMessage.data());
             GS_CORE_ASSERT(false, "Vertex shader compilation failure!")
-            return;
         }
+        return shader;
+    }
 
-        const unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-        source = fragmentSrc.c_str();
-        glShaderSource(fragmentShader, 1, &source, nullptr);
-
-        glCompileShader(fragmentShader);
-
-        glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
-        if (success == GL_FALSE)
-        {
-            int messageSize = 0;
-            glGetShaderiv(fragmentShader, GL_INFO_LOG_LENGTH, &messageSize);
-
-            std::vector<char> errorMessage(messageSize);
-            glGetShaderInfoLog(fragmentShader, messageSize, nullptr, errorMessage.data());
-
-            glDeleteShader(vertexShader);
-            glDeleteShader(fragmentShader);
-
-            GS_CORE_ERROR("{0}", errorMessage.data());
-            GS_CORE_ASSERT(false, "Fragment shader compilation failure!")
-            return;
-        }
-
+    void OpenGLShader::CreateAndLinkShaderProgram(unsigned int vertexShader, unsigned int fragmentShader)
+    {
         // Vertex and fragment shaders are successfully compiled.
         // Now time to link them together into a program.
         // Get a program object.
@@ -72,6 +171,7 @@ namespace Genesis
 
         glLinkProgram(m_RendererID);
 
+        int success = 0;
         // Note the different functions here: glGetProgram* instead of glGetShader*.
         glGetProgramiv(m_RendererID, GL_LINK_STATUS, &success);
         if (success == GL_FALSE)
@@ -95,20 +195,5 @@ namespace Genesis
         // Always detach shaders after a successful link.
         glDetachShader(m_RendererID, vertexShader);
         glDetachShader(m_RendererID, fragmentShader);
-    }
-
-    OpenGLShader::~OpenGLShader()
-    {
-        glDeleteProgram(0);
-    }
-
-    void OpenGLShader::Bind() const
-    {
-        glUseProgram(m_RendererID);
-    }
-
-    void OpenGLShader::UnBind() const
-    {
-        glUseProgram(0);
     }
 }  // namespace Genesis

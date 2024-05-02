@@ -41,51 +41,35 @@ public:
         std::shared_ptr<Genesis::IndexBuffer> indexBuffer(Genesis::IndexBuffer::Create(indices, 3));
         m_VertexArray->SetIndexBuffer(indexBuffer);
 
-        // clang-format off
-        std::string vertexSrc = R"(
-			    #version 460 core
-			    
-			    layout(location = 0) in vec3 a_Position;
-			    layout (location = 1) in vec3 a_Color;
-
-			    out vec3 ourColor;
-			    void main()
-			    {
-				    gl_Position = vec4(a_Position, 1.0);	
-				    ourColor = a_Color;
-			    }
-		    )";
-
-        std::string fragmentSrc = R"(
-			    #version 460 core
-			    
-			    out vec4 color;
-			    in vec3 ourColor;
-			    
-			    void main()
-			    {
-				    color = vec4(ourColor, 1);
-			    }
-		    )";
-        // clang-format on
-        m_Shader.reset(Genesis::Shader::Create(vertexSrc, fragmentSrc));
+        m_Shader.reset(Genesis::Shader::Create("../Genesis/res/shaders/Basic.glsl"));
     }
 
     virtual void OnUpdate() override
     {
-        Genesis::RenderCommand::SetClearColor({0.8, 0.5, 0.2, 1});
+        Genesis::RenderCommand::SetClearColor(m_backgroundColor);
         Genesis::RenderCommand::Clear();
 
         Genesis::Renderer::BeginScene();
         {
-
             m_Shader->Bind();
+            m_Shader->setFloatUnf("u_Color", m_triangleColor);
+
             Genesis::Renderer::Submit(m_VertexArray);
         }
         Genesis::Renderer::EndScene();
     }
+    virtual void OnImGuiRender() override
+    {
+        ImGui::Begin("Scene properties");
+        ImGui::ColorEdit4("Triangle color", &m_triangleColor[0]);
+        ImGui::ColorEdit4("Clear color", &m_backgroundColor[0]);
+        ImGui::End();
+    }
 
 private:
+    glm::vec4 m_triangleColor{0.8f, 0.3f, 0.5f, 1.f};
+    glm::vec4 m_backgroundColor{0.8, 0.5, 0.2, 1};
+
     std::shared_ptr<Genesis::Shader> m_Shader;
     std::shared_ptr<Genesis::VertexArray> m_VertexArray;
 };
