@@ -16,16 +16,31 @@ public:
         // clang-format off
         float vertices[] = 
         {
-             0.0f,  0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
-             0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
-            -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f
+             -0.5f, -0.5f, 0.0f,
+              0.5f,  0.5f, 0.0f,
+              0.5f, -0.5f, 0.0f,
+             -0.5f,  0.5f, 0.0f
         };
+
+        // star vertices
+        //float vertices[] = 
+        //{
+        //     0.0f,  0.75f, 0.0f, //  v2  0
+        //    -0.15f, 0.25f, 0.0f, //  v1  1
+        //    -0.5f,  0.25f, 0.0f, //  v0  2
+        //    -0.25f, -0.15f, 0.0f, // v9  3
+        //    -0.35f, -0.75f, 0.0f, // v8  4
+        //    0.0f, -0.5f, 0.0f,  //   v7  5
+        //    0.35f, -0.75f, 0.0f, //  v6  6
+        //    0.25f, -0.15f, 0.0f, //  v5  7
+        //    0.5f,  0.25f, 0.0f, //   v4  8
+        //    0.15f, 0.25f, 0.0f, //   v3  9
+        //};
         // clang-format on
 
         std::shared_ptr<Genesis::VertexBuffer> vertexBuffer(Genesis::VertexBuffer::Create(vertices, sizeof(vertices)));
         const Genesis::BufferLayout layout = {
             {Genesis::ShaderDataType::Float3, "a_Position"},
-            {Genesis::ShaderDataType::Float3, "a_Color"},
         };
 
         vertexBuffer->SetLayout(layout);
@@ -34,11 +49,22 @@ public:
         // clang-format off
         uint32_t indices[] = 
         {
-            0, 1, 2
+            // star indices
+            //0, 1, 9,
+            //2, 3, 1,
+            //4, 5, 3,
+            //6, 5, 7,
+            //8, 9, 7,
+            //9, 3, 7,
+            //1, 3, 9,
+            //5, 7, 3
+
+            0, 1, 3, // upper left triangle
+            0, 2, 1 // lower right triangle
         };
         // clang-format on
 
-        std::shared_ptr<Genesis::IndexBuffer> indexBuffer(Genesis::IndexBuffer::Create(indices, 3));
+        std::shared_ptr<Genesis::IndexBuffer> indexBuffer(Genesis::IndexBuffer::Create(indices, 6));
         m_VertexArray->SetIndexBuffer(indexBuffer);
 
         m_Shader.reset(Genesis::Shader::Create("../Genesis/res/shaders/Basic.glsl"));
@@ -52,7 +78,7 @@ public:
         Genesis::Renderer::BeginScene();
         {
             m_Shader->Bind();
-            m_Shader->setFloatUnf("u_Color", m_triangleColor);
+            m_Shader->setFloatUnf("u_Color", m_rectangleColor);
 
             Genesis::Renderer::Submit(m_VertexArray);
         }
@@ -61,13 +87,13 @@ public:
     virtual void OnImGuiRender() override
     {
         ImGui::Begin("Scene properties");
-        ImGui::ColorEdit4("Triangle color", &m_triangleColor[0]);
+        ImGui::ColorEdit4("Rectangle color", &m_rectangleColor[0]);
         ImGui::ColorEdit4("Clear color", &m_backgroundColor[0]);
         ImGui::End();
     }
 
 private:
-    glm::vec4 m_triangleColor{0.8f, 0.3f, 0.5f, 1.f};
+    glm::vec4 m_rectangleColor{0.3f, 0.8f, 0.5f, 1.f};
     glm::vec4 m_backgroundColor{0.8, 0.5, 0.2, 1};
 
     std::shared_ptr<Genesis::Shader> m_Shader;
